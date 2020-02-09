@@ -1,0 +1,401 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Money format</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">Money format</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> Money format</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#amount-ts" id="amount-ts" style="color: inherit; text-decoration: none;">
+					<h1>amount-ts</h1>
+				</a>
+				<p><strong>TypeScript</strong> Amount Formatting</p>
+				<a href="#summary" id="summary" style="color: inherit; text-decoration: none;">
+					<h2>Summary</h2>
+				</a>
+				<p><strong>amount-ts</strong> is a formatting library with a dead-simple interface. It has three methods: to, from and toJson.</p>
+				<p>Based on <a href="https://refreshless.com/wnumb/">wNumb.js</a> library (author <a href="https://github.com/leongersen">Leon Gersen</a>).</p>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<a href="#simple" id="simple" style="color: inherit; text-decoration: none;">
+					<h3>Simple</h3>
+				</a>
+				<pre><code><span class="hljs-keyword">const</span> formatter: Amount = <span class="hljs-keyword">new</span> Amount({
+    mark: <span class="hljs-string">'.'</span>,
+    thousand: <span class="hljs-string">','</span>,
+    prefix: <span class="hljs-string">'$ '</span>,
+    suffix: <span class="hljs-string">' p.p.'</span>,
+});
+
+<span class="hljs-comment">// Format a number:</span>
+<span class="hljs-keyword">const</span> result: <span class="hljs-built_in">string</span> = formatter.to(<span class="hljs-number">301980.62</span>);
+<span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// =&gt; '$ 301,980.62 p.p.'</span>
+
+<span class="hljs-comment">// Get a number back:</span>
+<span class="hljs-keyword">const</span> inverse: <span class="hljs-built_in">number</span> = formatter.from(<span class="hljs-string">'$ 301,980.62 p.p.'</span>);
+<span class="hljs-built_in">console</span>.log(inverse); <span class="hljs-comment">// =&gt; 301980.62</span></code></pre>
+				<a href="#appending-money-formatting" id="appending-money-formatting" style="color: inherit; text-decoration: none;">
+					<h3>Appending money-formatting</h3>
+				</a>
+				<pre><code><span class="hljs-comment">// Appending money-formatting</span>
+<span class="hljs-keyword">const</span> <span class="hljs-attribute">formatter</span>: Amount = <span class="hljs-keyword">new</span> Amount({
+    <span class="hljs-attribute">prefix</span>: <span class="hljs-string">'$ '</span>,
+    <span class="hljs-attribute">decimals</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attribute">thousand</span>: <span class="hljs-string">','</span>,
+});
+
+<span class="hljs-comment">// Numbers are always correctly rounded</span>
+<span class="hljs-keyword">const</span> <span class="hljs-attribute">result</span>: <span class="hljs-built_in">string</span> = formatter.to(<span class="hljs-number">980735.2635</span>);
+<span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// =&gt; '$ 980,735.264'</span></code></pre>
+				<a href="#manually-edit-numbers" id="manually-edit-numbers" style="color: inherit; text-decoration: none;">
+					<h3>Manually edit numbers</h3>
+				</a>
+				<pre><code><span class="hljs-comment">// Manually edit numbers</span>
+<span class="hljs-keyword">const</span> formatter: Amount = <span class="hljs-keyword">new</span> Amount({
+    <span class="hljs-attr">thousand</span>: <span class="hljs-string">'.'</span>,
+    <span class="hljs-attr">encoder</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> a </span>)</span>{
+        <span class="hljs-keyword">return</span> a * <span class="hljs-number">1E7</span>;
+    },
+    <span class="hljs-attr">decoder</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> a </span>)</span>{
+        <span class="hljs-keyword">return</span> a / <span class="hljs-number">1E7</span>;
+    },
+});
+
+<span class="hljs-comment">// Numbers are always correctly rounded</span>
+<span class="hljs-keyword">const</span> result: number = formatter.from(<span class="hljs-string">'-95.060.000.000'</span>);
+<span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// =&gt; -9506</span></code></pre>
+				<a href="#prefixing-negative-numbers-with-a-string" id="prefixing-negative-numbers-with-a-string" style="color: inherit; text-decoration: none;">
+					<h3>Prefixing negative numbers with a string</h3>
+				</a>
+				<pre><code><span class="hljs-comment">// Prefixing negative numbers with a string</span>
+<span class="hljs-keyword">const</span> formatter: Amount = <span class="hljs-keyword">new</span> Amount({
+    prefix: <span class="hljs-string">'$'</span>,
+    negativeBefore: <span class="hljs-string">'[NEGATIVE] '</span>,
+    decimals: <span class="hljs-number">0</span>,
+});
+
+<span class="hljs-comment">// Format a number:</span>
+<span class="hljs-keyword">const</span> result: <span class="hljs-built_in">string</span> = formatter.to(<span class="hljs-number">-260</span>);
+<span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// =&gt; '[NEGATIVE] $260'</span>
+
+<span class="hljs-comment">// Get a number back:</span>
+<span class="hljs-keyword">const</span> inverse: <span class="hljs-built_in">number</span> = formatter.from(<span class="hljs-string">'[NEGATIVE] $260'</span>);
+<span class="hljs-built_in">console</span>.log(inverse); <span class="hljs-comment">// =&gt; -260</span></code></pre>
+				<a href="#parsing-miss-matches-and-typo39s" id="parsing-miss-matches-and-typo39s" style="color: inherit; text-decoration: none;">
+					<h3>Parsing miss-matches and typo&#39;s</h3>
+				</a>
+				<pre><code><span class="hljs-comment">// Parsing miss-matches and typo's</span>
+<span class="hljs-keyword">const</span> formatter: Amount = <span class="hljs-keyword">new</span> Amount({
+    prefix: <span class="hljs-string">'$'</span>,
+    suffix: <span class="hljs-string">',-'</span>,
+    thousand: <span class="hljs-string">','</span>,
+});
+
+<span class="hljs-comment">// No problem. If there is a sensible number in the entry,</span>
+<span class="hljs-comment">// it'll be extracted, even if pre/post-fixes are missing or off.</span>
+<span class="hljs-keyword">const</span> inverse: <span class="hljs-built_in">number</span> = formatter.from(<span class="hljs-string">'90000 money'</span>);
+<span class="hljs-built_in">console</span>.log(inverse); <span class="hljs-comment">// =&gt; 90000</span>
+
+<span class="hljs-comment">// No idea... If the value makes no sense,</span>
+<span class="hljs-comment">// the 'from' method returns false.</span>
+<span class="hljs-built_in">console</span>.log(formatter.from(<span class="hljs-string">'spaaaaacceeee!!!'</span>)); <span class="hljs-comment">// =&gt; 0</span></code></pre>
+				<a href="#new-features" id="new-features" style="color: inherit; text-decoration: none;">
+					<h2>New features</h2>
+				</a>
+				<a href="#custom-currencies" id="custom-currencies" style="color: inherit; text-decoration: none;">
+					<h3>Custom currencies</h3>
+				</a>
+				<pre><code><span class="hljs-comment">// Custom currencies</span>
+<span class="hljs-keyword">const</span> currency: CurrencyInterface = {
+    code: <span class="hljs-string">'ARS'</span>,
+    symbol: <span class="hljs-string">'$'</span>,
+    thousandsSeparator: <span class="hljs-string">'.'</span>,
+    decimalSeparator: <span class="hljs-string">','</span>,
+    symbolOnLeft: <span class="hljs-literal">true</span>,
+    spaceBetweenAmountAndSymbol: <span class="hljs-literal">true</span>,
+    decimalDigits: <span class="hljs-number">2</span>,
+};
+
+<span class="hljs-keyword">const</span> formatter: Amount = Amount.fromCurrency(currency);
+<span class="hljs-keyword">const</span> result: <span class="hljs-built_in">string</span> = formatter.to(<span class="hljs-number">301980.62</span>);
+<span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// =&gt; '$ 301.980,62'</span>
+
+<span class="hljs-comment">// And inverse</span>
+<span class="hljs-keyword">const</span> inverse: <span class="hljs-built_in">number</span> = formatter.from(<span class="hljs-string">'$ 301.980,62'</span>);
+<span class="hljs-built_in">console</span>.log(inverse); <span class="hljs-comment">// =&gt; 301980.62</span></code></pre>
+				<a href="#known-currencies" id="known-currencies" style="color: inherit; text-decoration: none;">
+					<h3>Known currencies</h3>
+				</a>
+				<p>See <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a></p>
+				<pre><code><span class="hljs-comment">// Known currencies. See: https://en.wikipedia.org/wiki/ISO_4217</span>
+<span class="hljs-keyword">const</span> formatter: Amount = Amount.fromCurrencyString(<span class="hljs-string">'ARS'</span>);
+<span class="hljs-keyword">const</span> result: <span class="hljs-keyword">string</span> = formatter.<span class="hljs-keyword">to</span>(<span class="hljs-number">301980.62</span>);
+console.log(result); <span class="hljs-comment">// =&gt; '$ 301.980,62'</span></code></pre>
+				<a href="#millions" id="millions" style="color: inherit; text-decoration: none;">
+					<h3>Millions...</h3>
+				</a>
+				<pre><code><span class="hljs-comment">// Millions. See: https://en.wikipedia.org/wiki/ISO_4217</span>
+<span class="hljs-keyword">const</span> formatter: Amount = Amount.fromCurrencyString(<span class="hljs-string">'ARS'</span>);
+<span class="hljs-keyword">const</span> result: <span class="hljs-keyword">string</span> = formatter.<span class="hljs-keyword">to</span>(<span class="hljs-number">3019242580.62</span>);
+console.log(result); <span class="hljs-comment">// =&gt; '$ 3.019M'</span></code></pre>
+				<a href="#to-json" id="to-json" style="color: inherit; text-decoration: none;">
+					<h3>To JSON</h3>
+				</a>
+				<pre><code><span class="hljs-comment">// To Json. See: https://en.wikipedia.org/wiki/ISO_4217</span>
+const formatter: Amount = Amount.fromCurrencyString('ARS');
+const result: FormatsInterface = formatter.toJson(<span class="hljs-number">301980.62</span>);
+console.<span class="hljs-built_in">log</span>(result);
+
+/*
+ <span class="hljs-comment">// =&gt;</span>
+{
+    decimals: ',62',
+    decimalsWithoutMark: '62',
+    withCurrency: '$ 301.980,62',
+    withoutCurrency: '301.980,62',
+    withoutCurrencyAndDecimals: '301.980',
+    withoutDecimals: '$ 301.980',
+}
+*/
+</code></pre>
+				<a href="#to-json-complete" id="to-json-complete" style="color: inherit; text-decoration: none;">
+					<h3>To JSON (complete)</h3>
+				</a>
+				<pre><code><span class="hljs-string">//</span> <span class="hljs-string">To</span> <span class="hljs-string">Json</span> <span class="hljs-string">(complete).</span> <span class="hljs-attr">See:</span> <span class="hljs-string">https://en.wikipedia.org/wiki/ISO_4217</span>
+<span class="hljs-attr">const result:</span> <span class="hljs-string">JsonMoneyInterface</span> <span class="hljs-string">=</span> <span class="hljs-string">Amount.toJSON('ARS',</span> <span class="hljs-number">301980.62</span><span class="hljs-string">);</span>
+<span class="hljs-string">console.log(result);</span>
+
+<span class="hljs-string">/*</span>
+ <span class="hljs-string">//</span> <span class="hljs-string">=&gt;</span>
+<span class="hljs-string">{</span>
+    <span class="hljs-attr">currency:</span> <span class="hljs-string">{</span>
+        <span class="hljs-attr">code:</span> <span class="hljs-string">'ARS'</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">decimalDigits:</span> <span class="hljs-number">2</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">decimalSeparator:</span> <span class="hljs-string">','</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">spaceBetweenAmountAndSymbol:</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">symbol:</span> <span class="hljs-string">'$'</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">symbolOnLeft:</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">thousandsSeparator:</span> <span class="hljs-string">'.'</span><span class="hljs-string">,</span>
+    <span class="hljs-string">},</span>
+    <span class="hljs-attr">format:</span> <span class="hljs-string">{</span>
+        <span class="hljs-attr">decimals:</span> <span class="hljs-string">',62'</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">decimalsWithoutMark:</span> <span class="hljs-string">'62'</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">withCurrency:</span> <span class="hljs-string">'$ 301.980,62'</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">withoutCurrency:</span> <span class="hljs-string">'301.980,62'</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">withoutCurrencyAndDecimals:</span> <span class="hljs-string">'301.980'</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">withoutDecimals:</span> <span class="hljs-string">'$ 301.980'</span><span class="hljs-string">,</span>
+    <span class="hljs-string">},</span>
+    <span class="hljs-attr">value:</span> <span class="hljs-number">301980.62</span><span class="hljs-string">,</span>
+<span class="hljs-string">}</span>
+<span class="hljs-string">*/</span>
+</code></pre>
+				<a href="#author" id="author" style="color: inherit; text-decoration: none;">
+					<h2>Author</h2>
+				</a>
+				<p>Matias Nahuel Améndola</p>
+				<p><a href="https://ar.linkedin.com/in/matias-nahuel-am%C3%A9ndola-933a9711">Linkedin</a></p>
+				<p><a href="https://github.com/matiasnamendola">GitHub</a></p>
+				<p><a href="mailto:soporte.esolutions@gmail.com">Mail</a></p>
+				<p>Any suggestion is welcome</p>
+				<a href="#licence" id="licence" style="color: inherit; text-decoration: none;">
+					<h2>Licence</h2>
+				</a>
+				<p>Licensed <a href="./LICENSE">MIT</a>, so free for personal and commercial use.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/amount.html" class="tsd-kind-icon">Amount</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/amountconstructorinterface.html" class="tsd-kind-icon">Amount<wbr>Constructor<wbr>Interface</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/amountinterface.html" class="tsd-kind-icon">Amount<wbr>Interface</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/currencyinterface.html" class="tsd-kind-icon">Currency<wbr>Interface</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/formatsinterface.html" class="tsd-kind-icon">Formats<wbr>Interface</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/jsonmoneyinterface.html" class="tsd-kind-icon">Json<wbr>Money<wbr>Interface</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/options.html" class="tsd-kind-icon">Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#currency" class="tsd-kind-icon">Currency</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#currencies" class="tsd-kind-icon">Currencies</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#buildoptions" class="tsd-kind-icon">build<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#customtofixed" class="tsd-kind-icon">custom<wbr>ToFixed</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#formatfrom" class="tsd-kind-icon">format<wbr>From</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#formatto" class="tsd-kind-icon">format<wbr>To</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#isvalidnumber" class="tsd-kind-icon">is<wbr>Valid<wbr>Number</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#strendswith" class="tsd-kind-icon">str<wbr>Ends<wbr>With</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#strreverse" class="tsd-kind-icon">str<wbr>Reverse</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#strstartswith" class="tsd-kind-icon">str<wbr>Starts<wbr>With</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#validate" class="tsd-kind-icon">validate</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

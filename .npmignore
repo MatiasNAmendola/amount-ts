@@ -1,0 +1,21 @@
+# Commons
+
+.idea/
+.vscode
+node_modules/
+coverage/
+docs/
+jest/
+.DS_Store
+npm-debug.log
+package-lock.json
+
+# Only for npm
+
+src/
+tests/
+
+tsconfig.json
+tslint.json
+jest.config.js
+.prettierrc

@@ -1,0 +1,44 @@
+{
+    "name": "amount-ts",
+    "version": "1.0.0",
+    "description": "TypeScript money formatting",
+    "main": "./build/index.js",
+    "types": "./build/index.d.ts",
+    "scripts": {
+        "build": "tsc --outDir ./build",
+        "test": "jest --coverage",
+        "doc": "typedoc --name \"Money format\" --mode file --theme default --ignoreCompilerErrors",
+        "prettier": "prettier --write \"**/*.{json,md,scss,yaml,yml,ts,js}\""
+    },
+    "keywords": [
+        "money",
+        "currency",
+        "format"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/matiasnamendola/amount-ts.git"
+    },
+    "bugs": {
+        "url": "https://github.com/matiasnamendola/amount-ts/issues"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org"
+    },
+    "author": "Matias Nahuel Améndola<soporte.esolutions@gmail.com",
+    "license": "MIT",
+    "homepage": "https://github.com/matiasnamendola/amount-ts#readme",
+    "devDependencies": {
+        "@types/jest": "^24.9.0",
+        "@types/node": "^12.12.14",
+        "jest": "^24.9.0",
+        "jest-html-reporters": "^1.2.1",
+        "prettier": "^1.19.1",
+        "ts-jest": "^24.3.0",
+        "tslint": "^5.20.1",
+        "tslint-config-prettier": "^1.18.0",
+        "tslint-plugin-prettier": "^2.1.0",
+        "typedoc": "^0.15.6",
+        "typescript": "^3.7.4"
+    }
+}
