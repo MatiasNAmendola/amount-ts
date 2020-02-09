@@ -10,6 +10,18 @@ Based on [wNumb.js](https://refreshless.com/wnumb/) library (author [Leon Gersen
 
 Check this library in [**BUNDLE**PHOBIA](https://bundlephobia.com/result?p=amount-ts)
 
+[Repository](https://www.npmjs.com/package/amount-ts)
+
+
+## Installation
+
+Execute the following command in the terminal, being located in the main route of your project.
+
+```
+npm install --save amount-ts
+```
+
+
 ## Usage
 
 ### Simple
