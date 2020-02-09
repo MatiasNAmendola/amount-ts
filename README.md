@@ -8,6 +8,8 @@
 
 Based on [wNumb.js](https://refreshless.com/wnumb/) library (author [Leon Gersen](https://github.com/leongersen)).
 
+Check this library in [**BUNDLE**PHOBIA](https://bundlephobia.com/result?p=amount-ts)
+
 ## Usage
 
 ### Simple
