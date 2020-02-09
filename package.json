@@ -13,7 +13,9 @@
     "keywords": [
         "money",
         "currency",
-        "format"
+        "format",
+        "typescript",
+        "library"
     ],
     "repository": {
         "type": "git",
