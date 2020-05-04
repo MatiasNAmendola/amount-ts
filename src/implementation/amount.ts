@@ -119,6 +119,9 @@ export class Amount implements AmountInterface {
         const o4: Options = Object.assign({}, o3);
         o4.truncateDecimals = true;
 
+        const o5: Options = Object.assign({}, o1);
+        o5.prefix = 'ARS ';
+
         const wc: string = formatTo(o3, input);
         const wcd: string = formatTo(o4, input);
         const d: string = wc.replace(wcd, '');
@@ -126,6 +129,7 @@ export class Amount implements AmountInterface {
 
         return {
             withCurrency: formatTo(o1, input),
+            withCode: formatTo(o5, input),
             withoutDecimals: formatTo(o2, input),
             withoutCurrency: wc,
             withoutCurrencyAndDecimals: wcd,
