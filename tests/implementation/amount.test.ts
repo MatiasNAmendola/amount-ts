@@ -125,6 +125,7 @@ describe('Money format', () => {
                 format: {
                     decimals: ',62',
                     decimalsWithoutMark: '62',
+                    withCode: 'ARS 301.980,62',
                     withCurrency: '$ 301.980,62',
                     withoutCurrency: '301.980,62',
                     withoutCurrencyAndDecimals: '301.980',
@@ -151,6 +152,7 @@ describe('Money format', () => {
                 format: {
                     decimals: '',
                     decimalsWithoutMark: '',
+                    withCode: 'ARS 301M',
                     withCurrency: '$ 301M',
                     withoutCurrency: '301M',
                     withoutCurrencyAndDecimals: '301M',

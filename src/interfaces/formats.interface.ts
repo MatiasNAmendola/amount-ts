@@ -1,4 +1,5 @@
 export interface FormatsInterface {
+    withCode: string;
     withCurrency: string;
     withoutCurrency: string;
     withoutDecimals: string;
