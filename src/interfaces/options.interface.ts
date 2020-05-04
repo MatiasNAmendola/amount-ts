@@ -1,5 +1,9 @@
 export interface Options {
     /**
+     * The country code
+     */
+    code?: string;
+    /**
      * The number of decimals to include in the result. Limited to 7.
      */
     decimals?: number;

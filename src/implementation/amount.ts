@@ -120,11 +120,13 @@ export class Amount implements AmountInterface {
         o4.truncateDecimals = true;
 
         const wc: string = formatTo(o3, input);
+        const withCode: string = o3.code ? `${o3.code} ${wc}` : wc;
         const wcd: string = formatTo(o4, input);
         const d: string = wc.replace(wcd, '');
         const dwm: string = d.replace(o4.mark || '', '');
 
         return {
+            withCode: withCode,
             withCurrency: formatTo(o1, input),
             withoutDecimals: formatTo(o2, input),
             withoutCurrency: wc,
