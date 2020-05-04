@@ -174,6 +174,7 @@ console.log(result);
 {
     decimals: ',62',
     decimalsWithoutMark: '62',
+    withCode: 'ARS 301.980,62',
     withCurrency: '$ 301.980,62',
     withoutCurrency: '301.980,62',
     withoutCurrencyAndDecimals: '301.980',
@@ -205,6 +206,7 @@ console.log(result);
     format: {
         decimals: ',62',
         decimalsWithoutMark: '62',
+        withCode: 'ARS 301.980,62',
         withCurrency: '$ 301.980,62',
         withoutCurrency: '301.980,62',
         withoutCurrencyAndDecimals: '301.980',
